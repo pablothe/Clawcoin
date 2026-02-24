@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  # Local Hardhat node with Base mainnet fork
+  hardhat-node:
+    build:
+      context: ..
+      dockerfile: testing/Dockerfile
+    command: ["npx", "hardhat", "node", "--fork", "${BASE_RPC_URL:-https://mainnet.base.org}"]
+    working_dir: /app/contracts
+    ports:
+      - "8545:8545"
+    environment:
+      - IN_CLAWCOIN_TEST_CONTAINER=1
+
+  # Test runner — unit + integration tests
+  test-runner:
+    build:
+      context: ..
+      dockerfile: testing/Dockerfile
+    environment:
+      - IN_CLAWCOIN_TEST_CONTAINER=1
+      - HARDHAT_NODE_URL=http://hardhat-node:8545
+      - BASE_RPC_URL=${BASE_RPC_URL:-https://mainnet.base.org}
+    command: ["npm", "test"]
+
+  # Contract tests only
+  contract-tests:
+    build:
+      context: ..
+      dockerfile: testing/Dockerfile
+    working_dir: /app/contracts
+    environment:
+      - IN_CLAWCOIN_TEST_CONTAINER=1
+    command: ["npx", "hardhat", "test"]

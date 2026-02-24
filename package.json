@@ -1,0 +1,36 @@
+{
+  "name": "clawcoin",
+  "version": "0.1.0",
+  "description": "Crypto treasury agent — launches ERC-20 tokens, manages Safe treasuries, and operates token-funded micro-businesses on Base L2. Built on OpenClaw.",
+  "type": "module",
+  "private": true,
+  "workspaces": ["contracts"],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:e2e": "vitest run --config vitest.e2e.config.ts",
+    "lint": "oxlint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@safe-global/protocol-kit": "^4.0.2",
+    "@safe-global/api-kit": "^2.4.2",
+    "@safe-global/safe-core-sdk-types": "^5.0.2",
+    "@safe-global/safe-modules-deployments": "^2.0.0",
+    "zodiac-roles-sdk": "^2.0.0",
+    "@uniswap/v3-sdk": "^3.27.0",
+    "@uniswap/sdk-core": "^6.0.0",
+    "viem": "^2.20.0",
+    "ethers": "^6.13.0",
+    "@sinclair/typebox": "^0.32.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0",
+    "openclaw": "latest"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

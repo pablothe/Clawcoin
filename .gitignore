@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+.pnp.*
+
+# Build
+dist/
+*.tsbuildinfo
+
+# Contracts
+contracts/artifacts/
+contracts/cache/
+contracts/typechain-types/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Secrets — NEVER commit these
+*.keystore.json
+.clawcoin/keystore.json
+.clawcoin/keystore.meta.json
+*.keystore.*.bak
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test output
+coverage/
+.vitest/
+
+# Audit logs (contain operational data)
+.clawcoin/audit.jsonl
+.clawcoin/proposals/
+.clawcoin/emergency.json
+
+# Docker
+.docker/

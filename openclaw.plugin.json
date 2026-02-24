@@ -1,0 +1,30 @@
+{
+  "id": "crypto-treasury",
+  "name": "Clawcoin Crypto Treasury",
+  "version": "0.1.0",
+  "description": "Safe-based crypto treasury with spending limits, role permissions, and DEX integration for token-funded bot micro-businesses.",
+  "skills": ["./skills/skill-crypto-treasury"],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "chainId": { "type": "number", "default": 8453 },
+      "rpcUrl": { "type": "string" },
+      "safeAddress": { "type": "string" },
+      "tokenAddress": { "type": "string" },
+      "keystorePath": { "type": "string", "default": ".clawcoin/keystore.json" },
+      "auditLogPath": { "type": "string", "default": ".clawcoin/audit.jsonl" },
+      "whitelistedRecipients": {
+        "type": "array",
+        "items": { "type": "string" },
+        "default": []
+      }
+    }
+  },
+  "uiHints": {
+    "rpcUrl": { "label": "Base RPC URL", "help": "RPC endpoint for Base L2 (e.g., https://mainnet.base.org)" },
+    "safeAddress": { "label": "Safe Treasury Address", "help": "Leave empty to create a new Safe during init" },
+    "keystorePath": { "label": "Keystore Path", "sensitive": true },
+    "whitelistedRecipients": { "label": "Whitelisted Recipient Addresses" }
+  }
+}
