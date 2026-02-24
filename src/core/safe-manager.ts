@@ -216,7 +216,7 @@ export class SafeManager {
     }
   }
 
-  private ensureInitialized(): asserts this is { protocolKit: NonNullable<typeof this.protocolKit> } {
+  private ensureInitialized(): void {
     if (!this.protocolKit) {
       throw new Error(
         "SafeManager not initialized. Call deploySafe() or connectToSafe() first.",

@@ -40,7 +40,7 @@ export class KeystoreManager {
     const wallet = Wallet.createRandom();
 
     // Encrypt with high scrypt work factor
-    const encrypted = await encryptKeystoreJson(wallet, password, {
+    const encrypted = await encryptKeystoreJson(wallet as any, password, {
       scrypt: { N: 262144 },
     });
 

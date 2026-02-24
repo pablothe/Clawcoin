@@ -15,7 +15,7 @@ import { AuditLog } from "./src/core/audit-log.js";
 import type { CryptoTreasuryPluginConfig } from "./src/types/config.js";
 
 export default function register(api: OpenClawPluginApi) {
-  const config = api.pluginConfig as CryptoTreasuryPluginConfig;
+  const config = api.pluginConfig as unknown as CryptoTreasuryPluginConfig;
   const logger = api.logger;
 
   logger.info("[clawcoin] Crypto treasury plugin loading...");

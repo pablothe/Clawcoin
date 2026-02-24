@@ -17,11 +17,6 @@
  * All Roles configuration changes are BOARD-ONLY.
  */
 
-import {
-  processPermissions,
-  applyTargets,
-  type Target,
-} from "zodiac-roles-sdk";
 import { encodeFunctionData, parseAbi } from "viem";
 import type { SafeTransactionDataPartial } from "@safe-global/safe-core-sdk-types";
 

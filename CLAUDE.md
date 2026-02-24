@@ -32,6 +32,17 @@ cd contracts && npx hardhat test      # Contract tests
 cd contracts && npx hardhat compile   # Compile Solidity
 ```
 
+## CRITICAL: Execution Isolation
+
+**ALL testing and running of the Clawcoin bot MUST happen on an isolated Raspberry Pi or VM. NEVER run the bot on a development machine.**
+
+The bot takes autonomous control of a computer — executing blockchain transactions, managing cryptographic keys, and interacting with financial systems. Running without isolation risks unintended transactions, key exposure, and real blockchain interactions outside the container guard.
+
+**Safe execution environments:**
+- Docker container (tests): `docker compose -f testing/docker-compose.yml run test-runner npm test`
+- Raspberry Pi (deployment): See `docs/ROADMAP.md` Phase 2
+- VM with network isolation (alternative to Pi)
+
 ## Architecture
 
 The plugin entry point is `index.ts`, which implements `OpenClawPluginApi` — registering tools, commands, and services.
@@ -88,12 +99,12 @@ Two execution tiers enforced on-chain:
 
 ## Current Status
 
-The codebase is **architecturally complete** but has **never been compiled or run**. See `docs/ROADMAP.md` for the exact build sequence. Key blockers:
-- `contracts/package.json` does not exist yet (breaks workspace + Docker)
-- `npm install` has never been run (no `package-lock.json`)
-- `.env.example` does not exist
-- `scripts/crypto-demo.sh` is echo stubs, not real code
-- Target deployment: **Raspberry Pi** (isolated from dev machine)
+The codebase is **buildable** — Phase 1 is complete. TypeScript compiles cleanly (`tsc --noEmit` passes), Solidity contracts compile via Hardhat, and all dependencies are installed. Remaining phases:
+- **Phase 2**: Raspberry Pi deployment (hardware setup, Docker on ARM64)
+- **Phase 3**: End-to-end verification (all tests passing in Docker, demo script)
+- **Phase 4**: Production readiness (CI/CD, monitoring)
+
+See `docs/ROADMAP.md` for the full build sequence. Target deployment: **Raspberry Pi** (isolated from dev machine).
 
 ## Key File Paths
 

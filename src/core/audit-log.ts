@@ -170,7 +170,7 @@ export class AuditLog {
       entries = entries.filter((e) => e.category === params.category);
     }
     if (params.since) {
-      entries = entries.filter((e) => e.timestamp >= params.since);
+      entries = entries.filter((e) => e.timestamp >= params.since!);
     }
     if (params.actor) {
       entries = entries.filter((e) => e.actor === params.actor);

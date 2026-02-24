@@ -190,7 +190,7 @@ export class AllowanceManager {
       ],
     });
 
-    const values = result as bigint[];
+    const values = result as unknown as bigint[];
     return {
       amount: values[0],
       spent: values[1],

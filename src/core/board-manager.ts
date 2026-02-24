@@ -10,9 +10,6 @@
 
 import SafeApiKit from "@safe-global/api-kit";
 import type {
-  SafeMultisigTransactionResponse,
-} from "@safe-global/safe-core-sdk-types";
-import type {
   Proposal,
   ProposalAction,
   ProposalConfirmation,
@@ -157,7 +154,7 @@ export class BoardManager {
           await this.apiKit.getPendingTransactions(safeAddress);
 
         return response.results.map(
-          (tx: SafeMultisigTransactionResponse) => ({
+          (tx) => ({
             id: tx.safeTxHash,
             action: "transfer" as ProposalAction,
             description: "",
@@ -277,7 +274,7 @@ export class BoardManager {
         signer: c.owner,
         data: c.signature,
         isContractSignature: false,
-      });
+      } as any);
     }
 
     const result = await this.safeManager.executeTransaction(safeTransaction);

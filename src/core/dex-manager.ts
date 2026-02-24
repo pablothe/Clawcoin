@@ -43,10 +43,10 @@ const FACTORY_ABI = parseAbi([
   "function getPool(address tokenA, address tokenB, uint24 fee) external view returns (address pool)",
 ]);
 
-const CHAIN_MAP: Record<number, typeof base> = {
+const CHAIN_MAP = {
   8453: base,
   84532: baseSepolia,
-};
+} as const;
 
 export class DexManager {
   private publicClient: PublicClient;
@@ -60,7 +60,7 @@ export class DexManager {
       factory: string;
     },
   ) {
-    const chain = CHAIN_MAP[chainId] ?? base;
+    const chain = CHAIN_MAP[chainId as keyof typeof CHAIN_MAP] ?? base;
     this.publicClient = createPublicClient({
       chain,
       transport: http(rpcUrl),

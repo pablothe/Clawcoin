@@ -55,5 +55,3 @@ coverage/
 *.log
 npm-debug.log*
 
-# Lock files (generated, not yet committed — add to git once stable)
-# package-lock.json
