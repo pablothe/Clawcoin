@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+**This is a PUBLIC repository.** Never write real credentials, IP addresses, passwords, API keys, or private keys into any committed file. All secrets belong in `.env` (gitignored). Use `.env.example` as the template with blank/placeholder values only.
+
 ## What This Is
 
 Clawcoin is a crypto treasury agent (OpenClaw plugin) that launches ERC-20 tokens, manages Safe smart account treasuries, and operates token-funded micro-businesses on Base L2. It is a standalone plugin — OpenClaw is installed as an npm dependency, not forked.

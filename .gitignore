@@ -15,12 +15,18 @@ contracts/typechain-types/
 .env
 .env.local
 .env.*.local
+.env.production
+.env.development
 
 # Secrets — NEVER commit these
 *.keystore.json
 .clawcoin/keystore.json
 .clawcoin/keystore.meta.json
 *.keystore.*.bak
+*.pem
+*.key
+id_rsa*
+id_ed25519*
 
 # IDE
 .vscode/
@@ -44,3 +50,10 @@ coverage/
 
 # Docker
 .docker/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Lock files (generated, not yet committed — add to git once stable)
+# package-lock.json
